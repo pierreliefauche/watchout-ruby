@@ -9,6 +9,12 @@ Tilt.register :erb, Tilt[:erubis]
 require 'Helper'
 require 'curb'
 
+class String
+  def force_encoding(enc)
+    self
+  end
+end
+
 helpers do	
 	def my_forward(method, path)
 		call env.merge("PATH_INFO" => path, "REQUEST_METHOD" => method.upcase)
