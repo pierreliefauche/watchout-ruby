@@ -1,0 +1,59 @@
+<%# encoding: utf-8%>
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="fr" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>watchout! programme TV sur iPhone</title>
+	<meta content="tv television program programme iphone france paf français apple" name="Keywords" />
+	<meta content="Le programme TV sur iPhone!" name="description" />
+	<link rel="shortcut icon" href="http://cache.scallioncorp.com/watchout/img/favicon.ico" type="image/x-icon" />
+	
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+	<link rel="apple-touch-icon" href="http://cache.scallioncorp.com/watchout/img/home-icon.png" />
+	
+	<link href="style/iphone.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="header">
+		
+		<ul id="week">
+			<li><a class="tab" href="#<%= @helper.label_from_wday((@helper.wtoday+1)%7) %>">demain</a></li>
+			<% (2...7).each do |i| label = @helper.label_from_wday((@helper.wtoday+i)%7) %>
+				<li><a class="tab" href="#<%= label %>"><%= label %></a></li>
+			<% end %>
+		</ul>
+
+		<ul id="tab">
+			<li id="tab-now" class="tab unselected selected"><a class="tab" href="#now">actuellement</a></li>
+			<li id="tab-tonight" class="tab unselected"><a class="tab" href="#tonight">ce&nbsp;&nbsp;&nbsp;soir</a></li>
+			<li id="tab-night" class="tab unselected"><a class="tab" href="#night">soirée</a></li>
+		</ul>
+	</div>
+
+	<div id="channels">
+		<ul id="listLeft" class="channels">
+			<%= erb :now %>
+		</ul>
+		
+		<ul id="listRight" class="channels">
+			<%= erb :night, :locals => {:wday => @helper.label_from_wday(@helper.wtoday)} %>
+		</ul>
+	</div>
+	
+	<div id="footer">
+	</div>
+	
+	<script type="text/javascript" charset="utf-8" src="http://cache.scallioncorp.com/watchout/mootools-merged.js"></script>
+	<script type="text/javascript" charset="utf-8" src="script/iphone.js"></script>
+	
+</body>
+
+</html>

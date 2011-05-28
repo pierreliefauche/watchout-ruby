@@ -1,0 +1,41 @@
+<%# encoding: utf-8%>
+<% if time == 'now' %>
+	<a href="#" class="separator"><img src="http://cache.scallioncorp.com/watchout/img/fermer.jpg" /></a>
+	<span class="title"><%= show['title'] %></span><br/>
+<% end %>
+
+<% if show['subtitle'] %>
+	<span class="subtitle"><%= show['subtitle'] %></span><br/>
+<% end %>
+
+<span class="season">
+<% if show['season'] %>
+	saison <%= show['season'] %>
+	<% if !show['episode'] %>
+		<br/>
+	<% end %>
+<% end %>
+<% if show['episode'] %>
+	épisode <%= show['episode'] %><br/>
+<% end %>
+</span>
+
+<% if time != 'now' %>
+	<span class="horaire">de <%= show['start'] %> à <%= show['end'] %></span>
+<% end %>
+
+<% if show['image'] %>
+	<img src="<%= show['image'] %>" width="300" height="232" class="photo"/><br/>
+<% end %>
+
+<% if show['resume'] %>
+	<p><%= show['resume'] %></p>
+<% end %>
+
+<% if time=='now' %>
+	<span class="horaire">de <%= show['start'] %> à <%= show['end'] %></span><br/>
+<% end %>
+<span class="type"><%= show['type'] %></span>
+<% if time != 'now' %>
+	<a href="#" class="separator"><img src="http://cache.scallioncorp.com/watchout/img/fermer.jpg" /></a>
+<% end %>
