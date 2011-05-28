@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div id="header">
-		
+
 		<ul id="week">
 			<li><a class="tab" href="#<%= @helper.label_from_wday((@helper.wtoday+1)%7) %>">demain</a></li>
 			<% (2...7).each do |i| label = @helper.label_from_wday((@helper.wtoday+i)%7) %>
