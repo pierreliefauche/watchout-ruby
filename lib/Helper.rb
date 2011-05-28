@@ -175,7 +175,7 @@ class Helper
 			show['title'] = $1 if page =~ /<div class=\"b18\">([^<]*)</
 			
 			# récupération du numéro de programme pour l'image
-			show['image'] = $1 if page =~ /<td class=\"center\">[^<]*<img src=\"(.*\.jpg)\"/
+			show['image'] = $1 if page =~ /<td class=\"center\">[^<]*<img src=\"([^>]*\.jpg)\"/
 			
 			# récupération du sous-titre du programme
 			show['subtitle'] = $1 if page =~ /<\/div><div class=\"b12\">(.+)<\/div>/
