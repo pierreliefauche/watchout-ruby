@@ -9,11 +9,11 @@ Tilt.register :erb, Tilt[:erubis]
 require 'Helper'
 require 'curb'
 
-class String
-  def force_encoding(enc)
-    self
-  end
-end
+# class String
+#   def force_encoding(enc)
+#     self
+#   end
+# end
 
 helpers do	
 	def my_forward(method, path)
