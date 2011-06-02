@@ -20,6 +20,19 @@
 	<link rel="apple-touch-icon" href="http://cache.scallioncorp.com/watchout/img/home-icon.png" />
 	
 	<link href="style/iphone.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+	//<!--
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-6506635-7']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+		//-->
+	</script>
 </head>
 <body>
 	<div id="header">
@@ -27,13 +40,13 @@
 		<ul id="week">
 			<li><a class="tab" href="#<%= @helper.label_from_wday((@helper.wtoday+1)%7) %>">demain</a></li>
 			<% (2...7).each do |i| label = @helper.label_from_wday((@helper.wtoday+i)%7) %>
-				<li><a class="tab" href="#<%= label %>"><%= label %></a></li>
+				<li><a class="tab" href="#<%= label %>" onclick="_gaq.push(['_trackPageview','/<%= label %>'])"><%= label %></a></li>
 			<% end %>
 		</ul>
 
 		<ul id="tab">
-			<li id="tab-now" class="tab unselected selected"><a class="tab" href="#now">actuellement</a></li>
-			<li id="tab-tonight" class="tab unselected"><a class="tab" href="#tonight">ce&nbsp;&nbsp;&nbsp;soir</a></li>
+			<li id="tab-now" class="tab unselected selected"><a class="tab" href="#now" onclick="_gaq.push(['_trackPageview','/now'])">actuellement</a></li>
+			<li id="tab-tonight" class="tab unselected"><a class="tab" href="#tonight" onclick="_gaq.push(['_trackPageview','/tonight'])">ce&nbsp;&nbsp;&nbsp;soir</a></li>
 			<li id="tab-night" class="tab unselected"><a class="tab" href="#night">soirée</a></li>
 		</ul>
 	</div>
@@ -44,7 +57,7 @@
 		</ul>
 		
 		<ul id="listRight" class="channels">
-			<%= erb :night, :locals => {:wday => @helper.label_from_wday(@helper.wtoday)} %>
+			<%= erb :night, :locals => {:wday => @helper.label_from_wday(@helper.wtoday), :gaLabel => 'tonight'} %>
 		</ul>
 	</div>
 	

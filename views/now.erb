@@ -8,7 +8,7 @@
 		<table>
 			<tr>
 				<td class="logo"><span class="channel_img" style="background-position:0px -<%= 50*(channel['id']-1) %>px;"></span></td>
-				<td colspan="2"><a class="now show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nowLink'] %>"><%= channel['now'] %></a></td>
+				<td colspan="2"><a class="now show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nowLink'] %>" onclick="_gaq.push(['_trackPageview','/now/<%= "#{channel['id']}" %>'])"><%= channel['now'] %></a></td>
 			</tr>
 			<tr>
 				<td class="time"><%= channel['nowStart'] %></td>
@@ -17,11 +17,11 @@
 			</tr>
 			<tr>
 				<td class="time"><%= channel['nextStart'] %></td>
-				<td colspan="2"><a class="next show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nextLink'] %>"><%= channel['next'] %></a></td>
+				<td colspan="2"><a class="next show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nextLink'] %>" onclick="_gaq.push(['_trackPageview','/next/<%= "#{channel['id']}" %>'])"><%= channel['next'] %></a></td>
 			</tr>
 			<tr>
 				<td class="time"><%= channel['nextNextStart'] %></td>
-				<td colspan="2"><a class="next show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nextNextLink'] %>"><%= channel['nextNext'] %></a></td>
+				<td colspan="2"><a class="next show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nextNextLink'] %>" onclick="_gaq.push(['_trackPageview','/nextnext/<%= "#{channel['id']}" %>'])"><%= channel['nextNext'] %></a></td>
 			</tr>
 		</table>
 	</li>
