@@ -9,5 +9,6 @@ require 'bundler'
 
 Bundler.require
 
+$LOAD_PATH << Dir.getwd
 require 'app'
 run Sinatra::Application

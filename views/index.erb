@@ -38,8 +38,8 @@
 	<div id="header">
 
 		<ul id="week">
-			<li><a class="tab" href="#<%= @helper.label_from_wday((@helper.wtoday+1)%7) %>">demain</a></li>
-			<% (2...7).each do |i| label = @helper.label_from_wday((@helper.wtoday+i)%7) %>
+			<li><a class="tab" href="#<%= label_from_wday((@wtoday+1)%7) %>">demain</a></li>
+			<% (2...7).each do |i| label = label_from_wday((@wtoday+i)%7) %>
 				<li><a class="tab" href="#<%= label %>" onclick="_gaq.push(['_trackPageview','/<%= label %>'])"><%= label %></a></li>
 			<% end %>
 		</ul>
@@ -57,7 +57,7 @@
 		</ul>
 		
 		<ul id="listRight" class="channels">
-			<%= erb :night, :locals => {:wday => @helper.label_from_wday(@helper.wtoday), :gaLabel => 'tonight'} %>
+			<%= erb :night, :locals => {:wday => label_from_wday(@wtoday), :gaLabel => 'tonight'} %>
 		</ul>
 	</div>
 	
