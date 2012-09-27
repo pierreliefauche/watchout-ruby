@@ -1,29 +1,25 @@
 <%# encoding: utf-8%>
-<% random = random_string %>
-<% @programme_tv.now.each_with_index do |channel, i| %>
-	<% if i>0 %>
+<%
+random = random_string
+channels = @programme_tv.now
+for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,17,18]
+    next if channels[i].nil?
+%>
+	<% if i>1 %>
 	<li class="divider"></li>
 	<% end %>
-	<li class="channel" id="channel-<%= "#{random}#{channel['id']}" %>">
+	<li class="channel" id="channel-<%= "#{random}#{channels[i]['id']}" %>">
 		<table>
 			<tr>
-				<td class="logo"><span class="channel_img" style="background-position:0px -<%= 50*(channel['id']-1) %>px;"></span></td>
-				<td colspan="2"><a class="now show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nowLink'] %>" onclick="_gaq.push(['_trackPageview','/now/<%= "#{channel['id']}" %>'])"><%= channel['now'] %></a></td>
+				<td class="logo"><span class="channel_img" style="background-position:0px -<%= 50*(channels[i]['id']-1) %>px;"></span></td>
+				<td colspan="2"><a class="now show #<%= "#{random}#{channels[i]['id']}" %>" href="<%= channels[i]['link'] %>" onclick="_gaq.push(['_trackPageview','/now/<%= "#{channels[i]['id']}" %>'])"><%= channels[i]['title'] %></a></td>
 			</tr>
 			<tr>
-				<td class="time"><%= channel['nowStart'] %></td>
-				<td class="progression"><div style="width:<%= channel['nowDone'] %>% " class="progressBar" id="progres-<%= channel['id'] %>"><%= channel['nowDone'] %>%</div></td>
-				<td class="time bout"><%= channel['nowEnd'] %></td>
-			</tr>
-			<tr>
-				<td class="time"><%= channel['nextStart'] %></td>
-				<td colspan="2"><a class="next show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nextLink'] %>" onclick="_gaq.push(['_trackPageview','/next/<%= "#{channel['id']}" %>'])"><%= channel['next'] %></a></td>
-			</tr>
-			<tr>
-				<td class="time"><%= channel['nextNextStart'] %></td>
-				<td colspan="2"><a class="next show #<%= "#{random}#{channel['id']}" %>" href="<%= channel['nextNextLink'] %>" onclick="_gaq.push(['_trackPageview','/nextnext/<%= "#{channel['id']}" %>'])"><%= channel['nextNext'] %></a></td>
+				<td class="time"><%= channels[i]['start'] %></td>
+				<td class="progression"><div style="width:<%= channels[i]['percent'] %>% " class="progressBar" id="progres-<%= channels[i]['id'] %>"><%= channels[i]['percent'] %>%</div></td>
+				<td class="time bout"><%= channels[i]['end'] %></td>
 			</tr>
 		</table>
 	</li>
-	<li id="showDetails-<%= "#{random}#{channel['id']}" %>" class="showDetails channel"></li>
+	<li id="showDetails-<%= "#{random}#{channels[i]['id']}" %>" class="showDetails channel"></li>
 <% end %>

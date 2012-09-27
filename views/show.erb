@@ -21,7 +21,7 @@
 </span>
 
 <% if time != 'now' %>
-	<span class="horaire">de <%= show['start'] %> à <%= show['end'] %></span>
+	<span class="horaire">à <%= show['start'] %> (<%= show['duration'] %>)</span>
 <% end %>
 
 <% if show['image'] %>
@@ -33,7 +33,7 @@
 <% end %>
 
 <% if time=='now' %>
-	<span class="horaire">de <%= show['start'] %> à <%= show['end'] %></span><br/>
+	<span class="horaire">à <%= show['start'] %> (<%= show['duration'] %>)</span><br/>
 <% end %>
 <span class="type"><%= show['type'] %></span>
 <% if time != 'now' %>

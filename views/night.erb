@@ -2,13 +2,14 @@
 random = random_string
 channels = @programme_tv.night(wday)
 if !(defined? gaLabel) then gaLabel = wday end
-for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,17,18] 
+for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,17,18]
+    next if channels[i].nil?
 %>
 	<li id="channel-<%= "#{random}#{channels[i]['id']}" %>" class="channel">
 		<table>
 			<tr>
 				<td class="logo30"><span class="channel_img" style="background-position:0px -<%= 30*(channels[i]['id'].to_i - 1) %>px;"></span></td>
-				<td colspan="2"><a class="now show #<%= "#{random}#{channels[i]['id']}" %>" href="<%= channels[i]['showLink'] %>" onclick="_gaq.push(['_trackPageview','<%= "/#{gaLabel}/#{channels[i]['id']}" %>'])"><%= channels[i]['show'] %></a></td>
+				<td colspan="2"><a class="now show #<%= "#{random}#{channels[i]['id']}" %>" href="<%= channels[i]['link'] %>" onclick="_gaq.push(['_trackPageview','<%= "/#{gaLabel}/#{channels[i]['id']}" %>'])"><%= channels[i]['title'] %></a></td>
 			</tr>
 		</table>
 	</li>
