@@ -30,7 +30,7 @@ class ProgrammeTV
 				
 			# suppression de ce qu'il y a avant et après la liste des programmes
 			page.gsub(/\n/, '') =~ /<ul class=\"left\">(.*<ul class=\"right\">.*?)<\/ul>/
-  		page = $1#.force_encoding("UTF-8")
+  		page = $1.force_encoding("UTF-8")
 			
 			channels = Hash.new
 			
